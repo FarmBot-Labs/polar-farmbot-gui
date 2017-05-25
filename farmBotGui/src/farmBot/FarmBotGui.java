@@ -43,7 +43,8 @@ public class FarmBotGui {
 
    private static final int RADIUS_STEPS = 6000;
    // private static final double STEPS_PER_DEG 14.9173553 // 27:1
-   private static final double STEPS_PER_DEG = 28.5714286; // 51:1
+   // private static final double STEPS_PER_DEG = 28.5714286; // 51:1
+   private static final double STEPS_PER_DEG = 55.5555556; // 100:1
 
    /* t in degrees */
    private long[] polarToRect(int r, int tDeg) {
