@@ -156,7 +156,13 @@ public class FarmBotGui {
       });
       spinnerX.setValue(6000);
       spinnerY.setValue(6000);
-      runButton.addActionListener(e -> serial.cmdQueue.addAll(Arrays.asList(scriptArea.getText().split("\\n"))));
+      runButton.addActionListener(e -> {
+         for (String cmd : scriptArea.getText().split("\\n")) {
+            System.out.println(" - Adding command to queue:   " + cmd);
+            serial.cmdQueue.add(cmd);
+         }
+         serial.send(serial.cmdQueue.poll());
+      });
    }
 
    public static void main(String[] args) {

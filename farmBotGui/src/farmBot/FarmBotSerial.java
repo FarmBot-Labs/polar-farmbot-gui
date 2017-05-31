@@ -90,9 +90,9 @@ public class FarmBotSerial implements SerialPortEventListener {
                 .update(parts[1].substring(1), parts[2].substring(1), parts[3].substring(1), parts[4].substring(1),
                  parts[5].substring(1));
             }
-            if (inputLine.startsWith("R00") && !cmdQueue.isEmpty()) {
-               send(cmdQueue.poll());
-               if (cmdQueue.isEmpty()) gui.doneWithScript();
+            if (inputLine.startsWith("R02")) {
+               if (!cmdQueue.isEmpty()) send(cmdQueue.poll());
+               else gui.doneWithScript();
             }
          } catch (Exception e) {
             System.err.println(e.toString());
