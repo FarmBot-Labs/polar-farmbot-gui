@@ -1,6 +1,8 @@
 package farmBot;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
@@ -38,6 +40,9 @@ public class FarmBotGui {
    private JTextArea scriptArea;
    private JCheckBox repeatCheckBox;
    private JButton runButton;
+   private JButton unlockZButton;
+   private JButton zeroAxesButton;
+   private JButton lockZButton;
 
    private FarmBotSerial serial;
 
@@ -163,6 +168,9 @@ public class FarmBotGui {
          }
          serial.send(serial.cmdQueue.poll());
       });
+      zeroAxesButton.addActionListener(e -> serial.send("P01"));
+      unlockZButton.addActionListener(e -> serial.send("P02"));
+      lockZButton.addActionListener(e -> serial.send("P03"));
    }
 
    public static void main(String[] args) {
